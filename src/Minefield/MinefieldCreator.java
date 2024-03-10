@@ -1,8 +1,7 @@
-package AppStart;
+package Minefield;
 
-import PathOpener.MainPathOpener;
+import AppStart.GameObserver;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

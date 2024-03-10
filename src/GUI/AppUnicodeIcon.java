@@ -1,4 +1,4 @@
-package AppStart;
+package GUI;
 
 public class AppUnicodeIcon {
     private String flag="🚩";

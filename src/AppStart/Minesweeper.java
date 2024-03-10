@@ -1,5 +1,7 @@
 package AppStart;
 
+import GUI.GUIInitializer;
+
 import javax.swing.*;
 
 public class Minesweeper {

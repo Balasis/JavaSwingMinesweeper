@@ -1,4 +1,4 @@
-package AppStart;
+package MenuRelated;
 
 public class FlagsCounter {
  private int flagsCounter=9;

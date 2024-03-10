@@ -1,4 +1,4 @@
-package AppStart;
+package Minefield;
 
 public class IndexAround {
     private int TopLeftIndexA;

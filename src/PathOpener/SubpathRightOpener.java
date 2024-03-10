@@ -1,8 +1,8 @@
 package PathOpener;
 
-import AppStart.IndexAround;
-import AppStart.IndexChecker;
-import AppStart.MinefieldButton;
+import Minefield.IndexAround;
+import Minefield.IndexChecker;
+import Minefield.MinefieldButton;
 
 public class SubpathRightOpener {
     private MinefieldButton[][] minefield2DArray;

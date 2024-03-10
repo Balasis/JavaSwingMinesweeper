@@ -1,10 +1,8 @@
 package PathOpener;
 
-import AppStart.IndexAround;
-import AppStart.IndexChecker;
-import AppStart.MinefieldButton;
-
-import java.util.Arrays;
+import Minefield.IndexAround;
+import Minefield.IndexChecker;
+import Minefield.MinefieldButton;
 
 public class TopPathOpener {
     private MinefieldButton[][] minefield2DArray;

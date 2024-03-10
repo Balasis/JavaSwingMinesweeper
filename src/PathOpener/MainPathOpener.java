@@ -8,9 +8,9 @@ package PathOpener;// The logic here is to
 //      check the code inside openTop,OpenBottom e.t.c
 
 
-import AppStart.IndexAround;
-import AppStart.IndexChecker;
-import AppStart.MinefieldButton;
+import Minefield.IndexAround;
+import Minefield.IndexChecker;
+import Minefield.MinefieldButton;
 
 public class MainPathOpener {
     private MinefieldButton[][] minefield2DArray;

@@ -1,4 +1,9 @@
-package AppStart;
+package GUI;
+
+import AppStart.JButtonListeners;
+import MenuRelated.FlagsCounter;
+import MenuRelated.GameTimer;
+import Minefield.MinefieldCreator;
 
 import javax.swing.*;
 import java.awt.*;

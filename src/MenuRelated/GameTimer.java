@@ -1,4 +1,4 @@
-package AppStart;
+package MenuRelated;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
