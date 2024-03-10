@@ -15,11 +15,15 @@ public class MinefieldButton extends JButton{
     private AppUnicodeIcon icons=new AppUnicodeIcon();
 
     public MinefieldButton(){
+        //remove the square effect on focus
+        this.setFocusable(false);
     }
 
     public MinefieldButton(boolean isAnIndicator, boolean isAMine ){
     this.isAnIndicator = isAnIndicator;
     this.isAMine=isAMine;
+        //remove the square effect on focus
+        this.setFocusable(false);
     }
 
     public void setIndicatorNumber(int indicatorNumber){
