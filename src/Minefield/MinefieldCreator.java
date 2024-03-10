@@ -32,7 +32,7 @@ public class MinefieldCreator{
 
     private void addMinesToTheMinefield(MinefieldButton[][] minefield2DArray){
         while(numberOfMines>0){
-            MinefieldButton mfB=minefield2DArray[randomIntNumber(0,8)][randomIntNumber(0,8)];
+            MinefieldButton mfB=minefield2DArray[randomIntNumber(0,31)][randomIntNumber(0,31)];
             if (!mfB.isAMine()){// checks first if there is already a mine at the current location
                 mfB.setAMine(true);
                 numberOfMines--;

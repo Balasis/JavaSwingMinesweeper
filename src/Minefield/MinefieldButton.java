@@ -17,6 +17,7 @@ public class MinefieldButton extends JButton{
     public MinefieldButton(){
         //remove the square effect on focus
         this.setFocusable(false);
+
     }
 
     public MinefieldButton(boolean isAnIndicator, boolean isAMine ){

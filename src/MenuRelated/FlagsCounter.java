@@ -1,7 +1,7 @@
 package MenuRelated;
 
 public class FlagsCounter {
- private int flagsCounter=9;
+ private int flagsCounter=40;
 
     public void increaseFlagsCounter() {
         flagsCounter++;

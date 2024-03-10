@@ -1,5 +1,13 @@
 package GUI;
 
+//TO CHANGE DIFFICULTY  you need to change dimensions to:
+//-main frame from :set main frame properties..to have enough width so text is displayed instead of ...
+//-minefieldPanel layout rows and col
+//-MinefieldCreator variable here in GUI number of mines and square Dimensions.
+//-MinefieldCreator class ->addMinesToTheMinefield method, change the random number limit
+//so it will spread the bombs
+//For hard difficulty also change the
+
 import AppStart.JButtonListeners;
 import MenuRelated.FlagsCounter;
 import MenuRelated.GameTimer;
@@ -42,11 +50,11 @@ public class GUIInitializer{
         menuPanel.add(timer);
 
         //Bottom panel: minefield
-        JPanel minefieldPanel= new JPanel(new GridLayout(9,9));
-        minefieldPanel.setPreferredSize(new Dimension(350,500));
+        JPanel minefieldPanel= new JPanel(new GridLayout(32,32));
+        minefieldPanel.setPreferredSize(new Dimension(450,600));
 
         //Bottom ui elements
-        field=new MinefieldCreator(9,9);
+        field=new MinefieldCreator(150,32);
         passMineFieldIntoPanel(minefieldPanel,field.getMinefieldJButtons());
         JButtonListeners listeners=new JButtonListeners(field.getMinefieldJButtons(),this);
 
@@ -71,7 +79,7 @@ public class GUIInitializer{
     private void setMainFrameProperties(JFrame frame){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-        frame.setSize(500,600);
+        frame.setSize(1700,950);
         frame.setResizable(false);
     }
 
