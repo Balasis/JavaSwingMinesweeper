@@ -32,6 +32,7 @@ public class JButtonListeners implements GameObserver {
                 int finalI = i;
                 int finalJ = j;
 
+
                 //left CLICK cases
                 minefield2DArray[i][j].addActionListener(e -> {
 
@@ -39,15 +40,20 @@ public class JButtonListeners implements GameObserver {
                     //reset the flag if you open button that was flagged
                     setFlagText(minefield2DArray[finalI][finalJ]);
 
+
                     if (minefield2DArray[finalI][finalJ].isAMine()){
                         onGameOver();
                     }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
 
                     }else{
+
                         MainPathOpener pathOpener=new MainPathOpener();
                         pathOpener.openPaths(minefield2DArray,finalI,finalJ);
+                        checkWinCondition();
                     }
                 });
+
+
                 //RIGHT CLICK
                 minefield2DArray[i][j].addMouseListener(new MouseAdapter() {
                     @Override
@@ -86,6 +92,23 @@ public class JButtonListeners implements GameObserver {
             button.setText("");
             button.setForeground(null);
             redisplayFlagNumber();
+        }
+    }
+
+    @Override
+    public void checkWinCondition() {
+        boolean gameWon=true;
+        for (int i = 0; i < theMinefield.length; i++) {
+            for (int j = 0; j < theMinefield[0].length; j++) {
+
+                    if (theMinefield[i][j].isEmpty() && !theMinefield[i][j].isRevealed()){
+                        gameWon=false;
+                        break;
+                    }
+                }
+            }
+        if (gameWon){
+            System.out.println("you Won");
         }
     }
 
