@@ -43,15 +43,16 @@ public class JButtonListeners implements GameObserver {
 
                     if (minefield2DArray[finalI][finalJ].isAMine()){
                         onGameOver();
-                    }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
 
+                    }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
+                        checkWinCondition();
                     }else{
 
                         MainPathOpener pathOpener=new MainPathOpener();
                         pathOpener.openPaths(minefield2DArray,finalI,finalJ);
-
+                        checkWinCondition();
                     }
-                    checkWinCondition();
+
                 });
 
 
@@ -117,6 +118,7 @@ public class JButtonListeners implements GameObserver {
     public void onGameOver() {
         revealEverything();
         gui.getResetGameFace().setText(icons.getWoopsyFace());
+        gui.getResetGameFace().setForeground(Color.RED);
         gui.getGameTimer().stopTimer();
     }
 
