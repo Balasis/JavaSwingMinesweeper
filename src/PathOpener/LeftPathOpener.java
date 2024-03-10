@@ -43,5 +43,8 @@ public class LeftPathOpener {
             LeftButtonExists = indexChecker.isValidIndex(minefield2DArray, currentLeftIndexA, currentLeftIndexB);
             isItAnIndicator = LeftButtonExists ? minefield2DArray[currentLeftIndexA][currentLeftIndexB].isAnIndicator() : false;
         }
+
+
+
     }
 }

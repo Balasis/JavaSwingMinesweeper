@@ -1,18 +1,16 @@
 package AppStart;
 
 public class FlagsCounter {
- private static int flagsCounter=9;
+ private int flagsCounter=9;
 
-
-
-    public static void increaseFlagsCounter() {
-        FlagsCounter.flagsCounter++;
+    public void increaseFlagsCounter() {
+        flagsCounter++;
     }
-    public static void decreaseFlagsCounter() {
-        FlagsCounter.flagsCounter--;
+    public void decreaseFlagsCounter() {
+        flagsCounter--;
     }
 
-    public static int getFlagsCounter() {
+    public int getFlagsCounter() {
         return flagsCounter;
     }
 }

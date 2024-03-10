@@ -3,9 +3,11 @@ package AppStart;
 import PathOpener.MainPathOpener;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MinefieldCreator{
-
+    private final List<GameObserver> observers = new ArrayList<>();
     private final MinefieldButton[][] minefieldJButtons;
     private int numberOfMines;
     private final int squareDimensions;
@@ -16,7 +18,7 @@ public class MinefieldCreator{
         minefieldJButtons= createMinefield2dArray();//creates a 2d (square) field of MinefieldButtons(extend JButton class)
         addMinesToTheMinefield(minefieldJButtons);//add mines to random locations
         setIndicationNumbers(minefieldJButtons);//find and set number of surround mines of each Minefield Button.
-        setListenersToMinefieldBtn(minefieldJButtons);
+
     }
 
     private MinefieldButton[][] createMinefield2dArray(){
@@ -34,7 +36,6 @@ public class MinefieldCreator{
             MinefieldButton mfB=minefield2DArray[randomIntNumber(0,8)][randomIntNumber(0,8)];
             if (!mfB.isAMine()){// checks first if there is already a mine at the current location
                 mfB.setAMine(true);
-                mfB.setText("B");//debug purpose delete later.
                 numberOfMines--;
             }
         }
@@ -52,7 +53,7 @@ public class MinefieldCreator{
                     surroundingMines=findSurroundingMinesNum(minefield2DArray,i,j);
                     if (surroundingMines!=0){
                         minefield2DArray[i][j].setAnIndicator(true);
-                        minefield2DArray[i][j].setText(Integer.toString(surroundingMines));
+                        minefield2DArray[i][j].setIndicatorNumber(surroundingMines);
                     }
                 }
             }
@@ -91,29 +92,7 @@ public class MinefieldCreator{
                 colIndex >= 0 && colIndex < minefield2DArray[0].length;
     }
 
-    private void setListenersToMinefieldBtn(MinefieldButton[][] minefield2DArray){
-        for (int i = 0; i < minefield2DArray.length; i++) {
-            for (int j = 0; j < minefield2DArray[0].length; j++) {
-                int finalI = i;
-                int finalJ = j;
-                minefield2DArray[i][j].addActionListener(e -> {
-                    if (minefield2DArray[finalI][finalJ].isAMine()){
-                        System.out.println("Game Over");
-                    }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
-                        System.out.println("isAnIndicator");
-                    }else{
-                        System.out.println("hello");
-                        MainPathOpener pathOpener=new MainPathOpener();
-                        pathOpener.openPaths(minefield2DArray,finalI,finalJ);
-                    }
-                });
-            }
-        }
-    }
-
-
-
-    public JButton[][] getMinefieldJButtons() {
+    public MinefieldButton[][] getMinefieldJButtons() {
         return minefieldJButtons;
     }
 

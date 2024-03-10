@@ -11,7 +11,9 @@ public class SubpathLeftOpener {
     private final IndexChecker indexChecker=new IndexChecker();
     private final IndexAround indexAround=new IndexAround();
     private final SquarePathOpener squarePathOpener=new SquarePathOpener();
-
+    //Afraid of recursion so i just extend a bit the cases
+    private final SubpathTopOpener subpathTopOpener=new SubpathTopOpener();
+    private final SubpathBottomOpener subpathBottomOpener=new SubpathBottomOpener();
     public SubpathLeftOpener(){
     }
 
@@ -31,6 +33,9 @@ public class SubpathLeftOpener {
 
             minefield2DArray[indexA][currentLeftIndexB].setRevealed(true);
 
+            subpathTopOpener.openPath(minefield2DArray,indexA,currentLeftIndexB);
+            subpathBottomOpener.openPath(minefield2DArray,indexA,currentLeftIndexB);
+
             if ( minefield2DArray[indexA][currentLeftIndexB].isEmpty()){
 
                 squarePathOpener.openPath(minefield2DArray,indexA,currentLeftIndexB);
@@ -39,5 +44,7 @@ public class SubpathLeftOpener {
             LeftButtonExists= indexChecker.isValidIndex(minefield2DArray,indexA,currentLeftIndexB);
             isItAnIndicator = LeftButtonExists ? minefield2DArray[indexA][currentLeftIndexB].isAnIndicator() : false;
         }
+
+
     }
 }

@@ -28,6 +28,10 @@ public class GameTimer {
         swingTimer.start();
     }
 
+    public void stopTimer() {
+        swingTimer.stop();
+    }
+
     private String sendToUi(){
         timerLabel.setText(toString());
        return String.format("  %02d:%02d", minutes, seconds);

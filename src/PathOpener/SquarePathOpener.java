@@ -36,10 +36,10 @@ public class SquarePathOpener {
         for (int[] relativePosition:relativePositions){
             int currentIndexA=indexA + relativePosition[0];
             int currentIndexB=indexB + relativePosition[1];
-        //    System.out.println( " [ "+currentIndexA +" , "+ currentIndexB+" ]");
-            if (indexChecker.isValidIndex(minefield2DArray,currentIndexA,currentIndexB)){
-           //     System.out.println("In with "+currentIndexA+" | "+ currentIndexB);
+
+            if (indexChecker.isValidIndex(minefield2DArray,currentIndexA,currentIndexB)){           //
                 minefield2DArray[currentIndexA][currentIndexB].setRevealed(true);
+
             }
         }
     }

@@ -13,54 +13,19 @@ public class MinefieldButton extends JButton{
     private boolean isAMine;
     private boolean isRevealed=false;
     private boolean isFlagged=false;
-    private AppUnicodeIcon icons;
+    private AppUnicodeIcon icons=new AppUnicodeIcon();
 
     public MinefieldButton(){
-    addListeners();
     }
 
     public MinefieldButton(boolean isAnIndicator, boolean isAMine ){
     this.isAnIndicator = isAnIndicator;
     this.isAMine=isAMine;
-    addListeners();
     }
 
-    private void addListeners(){
-        //Left click listener (set to revealButton)
-        this.addActionListener((ActionEvent e) -> {
-            this.setRevealed(true);
-        });
-
-        //Right Click listener (set to flag)
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    setFlagText();
-                }
-            }
-        });
+    public void setIndicatorNumber(int indicatorNumber){
+        this.indicatorNumber=indicatorNumber;
     }
-
-    private void setFlagText(){
-        if (isRevealed){
-            return;
-        }
-            if (!isFlagged) {
-                isFlagged = true;
-                FlagsCounter.decreaseFlagsCounter();
-                this.setText("\uD83D\uDEA9");
-                this.setForeground(Color.RED);
-                System.out.println(FlagsCounter.getFlagsCounter());
-            }else{
-                FlagsCounter.increaseFlagsCounter();
-                isFlagged=false;
-                this.setText("");
-                this.setForeground(null);
-                System.out.println(FlagsCounter.getFlagsCounter());
-            }
-    }
-
 
     public void setAnIndicator(boolean anIndicator) {
         isAnIndicator = anIndicator;
@@ -76,14 +41,35 @@ public class MinefieldButton extends JButton{
         this.setText(" ");
         this.setBackground(Color.gray);
         String buttonString= isAMine ? icons.getMine() : isAnIndicator() ? Integer.toString(indicatorNumber) : " ";
+        setRevealedColor();
         this.setText(buttonString);
         isRevealed = revealed;
 
     }
 
-    private void setRevealedColor(){
+    public void setFlagged(boolean flagged) {
+        isFlagged = flagged;
+    }
 
-        this.setForeground(Color.RED);
+    private void setRevealedColor(){
+        Color c;
+        if(isAnIndicator){
+                if (indicatorNumber==1){
+                    c=Color.GREEN;
+                } else if (indicatorNumber==2) {
+                    c=Color.blue;
+                }else if(indicatorNumber==3){
+                    c=Color.orange;
+                }else{
+                    c=Color.RED;
+                }
+
+        }else if(isAMine){
+            c=Color.BLACK;
+        }else{
+            c=Color.GRAY;
+        }
+        this.setForeground(c);
     }
 
 
@@ -103,6 +89,14 @@ public class MinefieldButton extends JButton{
     public boolean isRevealed() {
         return isRevealed;
     }
+
+    public boolean isFlagged() {
+        return isFlagged;
+    }
+
+
+
+
 
 
     @Override

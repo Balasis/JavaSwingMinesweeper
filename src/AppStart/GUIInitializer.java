@@ -3,29 +3,37 @@ package AppStart;
 import javax.swing.*;
 import java.awt.*;
 
-public class GUIInitializer {
+public class GUIInitializer{
+    //collection of Unicode icons to populate UI
+    private JFrame mainFrame;
+    private final AppUnicodeIcon icons=new AppUnicodeIcon();
+    private JLabel flagsLeft;
+    private JButton resetGameFace;
+    private JLabel timer;
+    private GameTimer gameTimer;
+    private MinefieldCreator field;
+    private final FlagsCounter flagsCounter=new FlagsCounter();
 
 
-    public static void run(){
+    public void run(){
+
         //Window frame of app:
-        JFrame mainFrame = new JFrame("AppStart.Minesweeper");
+        mainFrame = new JFrame("AppStart.Minesweeper");
         //passing properties of if e.g dimensions ,close button=>close app e.t.c
         setMainFrameProperties(mainFrame);
-
-        AppUnicodeIcon icons=new AppUnicodeIcon();//collection of Unicode icons to populate UI
 
 
         //Top panel: includes Number of flags, Timer and Restart button of the game
         JPanel menuPanel= new JPanel(new GridLayout(1, 3, 10, 10));
             menuPanel.setPreferredSize(new Dimension(410, 100));
                 //Flag section
-                JLabel flagsLeft=new JLabel();
-                    setFlagsLeftProperties(flagsLeft,icons);
+               flagsLeft = new JLabel();
+                setFlagsLeftProperties(flagsLeft,icons);
                 //Restart section
-                JButton resetGameFace=new JButton(icons.getHappyFace());
+                resetGameFace=new JButton(icons.getHappyFace());
                     setResetGameFaceProperties(resetGameFace);
                 //Timer section
-                JLabel timer=new JLabel();
+                timer=new JLabel();
                     setTimerJLabelProperties(timer);
 
             menuPanel.add(flagsLeft);
@@ -37,9 +45,9 @@ public class GUIInitializer {
         JPanel minefieldPanel= new JPanel(new GridLayout(9,9));
         minefieldPanel.setPreferredSize(new Dimension(350,500));
             //Creating the minefield
-            MinefieldCreator field=new MinefieldCreator(9,9);
+            field=new MinefieldCreator(9,9);
             passMineFieldIntoPanel(minefieldPanel,field.getMinefieldJButtons());
-
+            JButtonListeners listeners=new JButtonListeners(field.getMinefieldJButtons(),this);
 
         //Spacers
         JPanel spacer1Left=new JPanel();
@@ -58,21 +66,21 @@ public class GUIInitializer {
         mainFrame.setVisible(true);
     }
 
-    private static void setMainFrameProperties(JFrame frame){
+    private void setMainFrameProperties(JFrame frame){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setSize(500,600);
         frame.setResizable(false);
     }
 
-    private static void setFlagsLeftProperties(JLabel flagsLeft , AppUnicodeIcon icons){
-        flagsLeft.setText( "     " +   Integer.toString(FlagsCounter.getFlagsCounter()) + icons.getFlag());
+    private void setFlagsLeftProperties(JLabel flagsLeft , AppUnicodeIcon icons){
+        flagsLeft.setText( "     " +   Integer.toString(flagsCounter.getFlagsCounter()) + icons.getFlag());
         Font font = flagsLeft.getFont();
         flagsLeft.setFont(font.deriveFont(Font.BOLD, 50f));
       //  flagsLeft.setPreferredSize(new Dimension(100, 70));
     }
 
-    private static void setResetGameFaceProperties(JButton resetGameFace){
+    private void setResetGameFaceProperties(JButton resetGameFace){
         Font font = resetGameFace.getFont();
         resetGameFace.setFont(font.deriveFont(Font.BOLD, 50f));
         resetGameFace.setForeground(Color.GREEN);
@@ -85,15 +93,14 @@ public class GUIInitializer {
         resetGameFace.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
-    private static void setTimerJLabelProperties(JLabel timerLabel){
-       // timerLabel.setPreferredSize(new Dimension(100, 70));
-        GameTimer gameTimer= new GameTimer(timerLabel);
+    private void setTimerJLabelProperties(JLabel timerLabel){
+        gameTimer= new GameTimer(timerLabel);
         Font font = timerLabel.getFont();
         timerLabel.setFont(font.deriveFont(Font.BOLD, 50f));
     }
 
 
-    private static void passMineFieldIntoPanel(JPanel minefieldPanel,JButton[][] minefield2DArray){
+    private void passMineFieldIntoPanel(JPanel minefieldPanel,JButton[][] minefield2DArray){
         for (int i = 0; i < minefield2DArray.length; i++) {
             for (int j = 0; j < minefield2DArray[0].length; j++) {
                 minefieldPanel.add(minefield2DArray[i][j]);
@@ -101,5 +108,31 @@ public class GUIInitializer {
         }
     }
 
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
 
+    public JLabel getFlagsLeft() {
+        return flagsLeft;
+    }
+
+    public JButton getResetGameFace() {
+        return resetGameFace;
+    }
+
+    public JLabel getTimer() {
+        return timer;
+    }
+
+    public GameTimer getGameTimer() {
+        return gameTimer;
+    }
+
+    public MinefieldCreator getField(){
+        return field;
+    }
+
+    public FlagsCounter getFlagsCounter() {
+        return flagsCounter;
+    }
 }

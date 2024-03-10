@@ -11,7 +11,9 @@ public class SubpathRightOpener {
     private final IndexChecker indexChecker=new IndexChecker();
     private final IndexAround indexAround=new IndexAround();
     private final SquarePathOpener squarePathOpener=new SquarePathOpener();
-
+     //afraid of infinite recursion ,I just expand the cases
+    private final SubpathTopOpener subpathTopOpener=new SubpathTopOpener();
+    private final SubpathBottomOpener subpathBottomOpener=new SubpathBottomOpener();
     public SubpathRightOpener(){
 
     }
@@ -31,8 +33,10 @@ public class SubpathRightOpener {
 
 
             minefield2DArray[indexA][currentRightIndexB].setRevealed(true);
+            subpathTopOpener.openPath(minefield2DArray, indexA, currentRightIndexB);
+            subpathBottomOpener.openPath(minefield2DArray, indexA, currentRightIndexB);
+
             if ( minefield2DArray[indexA][currentRightIndexB].isEmpty()){
-            System.out.println( " [ "+indexA +" , "+ currentRightIndexB+" ]");
                 squarePathOpener.openPath(minefield2DArray,indexA,currentRightIndexB);
             }
             currentRightIndexB++;
