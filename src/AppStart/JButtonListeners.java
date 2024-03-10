@@ -49,8 +49,9 @@ public class JButtonListeners implements GameObserver {
 
                         MainPathOpener pathOpener=new MainPathOpener();
                         pathOpener.openPaths(minefield2DArray,finalI,finalJ);
-                        checkWinCondition();
+
                     }
+                    checkWinCondition();
                 });
 
 
@@ -100,15 +101,15 @@ public class JButtonListeners implements GameObserver {
         boolean gameWon=true;
         for (int i = 0; i < theMinefield.length; i++) {
             for (int j = 0; j < theMinefield[0].length; j++) {
-
-                    if (theMinefield[i][j].isEmpty() && !theMinefield[i][j].isRevealed()){
+                    if (!theMinefield[i][j].isAMine() && !theMinefield[i][j].isRevealed()){
                         gameWon=false;
                         break;
                     }
                 }
             }
         if (gameWon){
-            System.out.println("you Won");
+            JOptionPane.showMessageDialog(null, "Congratulations! You've won the game!");
+            gui.getGameTimer().stopTimer();
         }
     }
 
