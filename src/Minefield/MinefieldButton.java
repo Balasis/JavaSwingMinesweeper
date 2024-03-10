@@ -1,5 +1,6 @@
 package Minefield;
 
+import AppStart.JButtonListeners;
 import GUI.AppUnicodeIcon;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class MinefieldButton extends JButton{
     private boolean isRevealed=false;
     private boolean isFlagged=false;
     private AppUnicodeIcon icons=new AppUnicodeIcon();
+    private JButtonListeners listeners;
 
     public MinefieldButton(){
         //remove the square effect on focus
@@ -43,7 +45,11 @@ public class MinefieldButton extends JButton{
     public void setRevealed(boolean revealed) {
         this.setText(" ");
         this.setBackground(Color.gray);
+
         String buttonString= isAMine ? icons.getMine() : isAnIndicator() ? Integer.toString(indicatorNumber) : " ";
+        if (this.isFlagged){
+            listeners.setFlagText(this);
+        }
         setRevealedColor();
         this.setText(buttonString);
         isRevealed = revealed;
@@ -97,10 +103,9 @@ public class MinefieldButton extends JButton{
         return isFlagged;
     }
 
-
-
-
-
+    public void setListeners(JButtonListeners listeners) {
+        this.listeners = listeners;
+    }
 
     @Override
     public String toString() {

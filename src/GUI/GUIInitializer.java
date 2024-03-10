@@ -3,6 +3,7 @@ package GUI;
 import AppStart.JButtonListeners;
 import MenuRelated.FlagsCounter;
 import MenuRelated.GameTimer;
+import Minefield.MinefieldButton;
 import Minefield.MinefieldCreator;
 
 import javax.swing.*;
@@ -15,10 +16,7 @@ public class GUIInitializer{
     private final FlagsCounter flagsCounter=new FlagsCounter();
     private JLabel flagsLeft;//placeholder for flagsCounter
     private GameTimer gameTimer;
-    private JLabel timer;//placeholderForGameTimer
     private JButton resetGameFace;
-    private MinefieldCreator field;
-
 
 
     public void run(){
@@ -31,7 +29,8 @@ public class GUIInitializer{
         //Top ui elements
         flagsLeft = new JLabel();
         resetGameFace=new JButton(icons.getHappyFace());
-        timer=new JLabel();
+        //placeholderForGameTimer
+        JLabel timer = new JLabel();
         //passing ui properties to them
         setFlagsLeftProperties(flagsLeft,icons);
         setResetGameFaceProperties(resetGameFace);
@@ -46,9 +45,10 @@ public class GUIInitializer{
         minefieldPanel.setPreferredSize(new Dimension(350,500));
 
         //Bottom ui elements
-        field=new MinefieldCreator(9,9);
-        passMineFieldIntoPanel(minefieldPanel,field.getMinefieldJButtons());
+        MinefieldCreator field = new MinefieldCreator(9, 9);
+        passMineFieldIntoPanel(minefieldPanel, field.getMinefieldJButtons());
         JButtonListeners listeners=new JButtonListeners(field.getMinefieldJButtons(),this);
+        passListenerRefToFieldBtn(field.getMinefieldJButtons(),listeners);
 
                 //Bottom ui Spacer elements
                 JPanel spacer1Left=new JPanel();
@@ -69,7 +69,7 @@ public class GUIInitializer{
     }
 
     private void setMainFrameProperties(JFrame frame){
-        ImageIcon i = new ImageIcon("ichigo.ico");//Icon doesn't work..idk why..cant find it yet..
+        ImageIcon i = new ImageIcon("ichigo.ico");
         frame.setIconImage(i.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -111,6 +111,13 @@ public class GUIInitializer{
         }
     }
 
+    private void passListenerRefToFieldBtn(MinefieldButton[][] minefield2DArray, JButtonListeners listeners){
+        for (int i = 0; i < minefield2DArray.length; i++) {
+            for (int j = 0; j < minefield2DArray[0].length; j++) {
+                minefield2DArray[i][j].setListeners(listeners);
+            }
+        }
+    }
 
     //Getters
     public JFrame getMainFrame() {

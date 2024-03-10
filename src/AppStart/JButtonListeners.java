@@ -16,6 +16,7 @@ public class JButtonListeners implements GameObserver {
     private final GUIInitializer gui;
     private final MinefieldButton[][] theMinefield;
 
+
     public JButtonListeners(MinefieldButton[][] minefield2DArray,GUIInitializer gui){
         this.gui=gui;
         this.theMinefield=minefield2DArray;
@@ -73,7 +74,7 @@ public class JButtonListeners implements GameObserver {
         }
     }
 
-    private void setFlagText(MinefieldButton button){
+    public void setFlagText(MinefieldButton button){
         if (button.isRevealed()){
             if (button.isFlagged()){
                 gui.getFlagsCounter().increaseFlagsCounter();
