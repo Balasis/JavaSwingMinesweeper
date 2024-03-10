@@ -1,0 +1,2 @@
+public class Resetter {
+}
