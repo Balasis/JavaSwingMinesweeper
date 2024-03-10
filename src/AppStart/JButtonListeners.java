@@ -108,8 +108,8 @@ public class JButtonListeners implements GameObserver {
                 }
             }
         if (gameWon){
-            JOptionPane.showMessageDialog(null, "Congratulations! You've won the game!");
             gui.getGameTimer().stopTimer();
+            JOptionPane.showMessageDialog(null, "Congratulations! You've won the game!");
         }
     }
 
