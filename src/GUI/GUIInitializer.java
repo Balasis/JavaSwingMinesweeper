@@ -22,7 +22,7 @@ public class GUIInitializer{
 
 
     public void run(){
-        mainFrame = new JFrame("AppStart.Minesweeper");
+        mainFrame = new JFrame("Minesweeper by John Balasis - AthensTech 2024");
         setMainFrameProperties(mainFrame);//Size,WindowsClose e.t.c
 
         //Top panel
@@ -69,6 +69,8 @@ public class GUIInitializer{
     }
 
     private void setMainFrameProperties(JFrame frame){
+        ImageIcon i = new ImageIcon("ichigo.ico");//Icon doesn't work..idk why..cant find it yet..
+        frame.setIconImage(i.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setSize(500,600);
