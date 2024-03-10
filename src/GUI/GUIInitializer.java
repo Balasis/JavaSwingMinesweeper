@@ -30,7 +30,7 @@ public class GUIInitializer{
 
 
     public void run(){
-        mainFrame = new JFrame("AppStart.Minesweeper");
+        mainFrame = new JFrame("Minesweeper by John Balasis - AthensTech 2024");
         setMainFrameProperties(mainFrame);//Size,WindowsClose e.t.c
 
         //Top panel
