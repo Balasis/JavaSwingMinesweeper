@@ -19,35 +19,34 @@ public class JButtonListeners implements GameObserver {
     public JButtonListeners(MinefieldButton[][] minefield2DArray,GUIInitializer gui){
         this.gui=gui;
         this.theMinefield=minefield2DArray;
+
         //getResetGameFace listener
         gui.getResetGameFace().addActionListener(e -> {
            restartGame();
         });
 
-
-
-        //SET ON CLICK ACTION...CASES OF BOMB INDICATOR OR EMPTY CELL/BUTTON
+        //Minefield buttons listeners:
         for (int i = 0; i < minefield2DArray.length; i++) {
             for (int j = 0; j < minefield2DArray[0].length; j++) {
                 int finalI = i;
                 int finalJ = j;
-
-
-                //left CLICK cases
+                //Left click listener :
                 minefield2DArray[i][j].addActionListener(e -> {
-
+                    //Reveal it no matter what
                     minefield2DArray[finalI][finalJ].setRevealed(true);
-                    //reset the flag if you open button that was flagged
+
+                    //Reset the flag in case there as one
                     setFlagText(minefield2DArray[finalI][finalJ]);
-
-
+                    //Check if it is a mine
                     if (minefield2DArray[finalI][finalJ].isAMine()){
                         onGameOver();
-
+                     //check if it is an indicator
                     }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
                         checkWinCondition();
+                    //Any other cases means it is an empty cell
+                    // therefore just expand(open the closed ones)
                     }else{
-
+                        //Opener has combinations of expanding and open adjacent buttons/cells
                         MainPathOpener pathOpener=new MainPathOpener();
                         pathOpener.openPaths(minefield2DArray,finalI,finalJ);
                         checkWinCondition();
@@ -55,18 +54,15 @@ public class JButtonListeners implements GameObserver {
 
                 });
 
-
-                //RIGHT CLICK
+                //RIGHT CLICK :sets a flag on not revealed buttons.
                 minefield2DArray[i][j].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseReleased(MouseEvent e) {
-                        if (SwingUtilities.isRightMouseButton(e)) {
-                            setFlagText(minefield2DArray[finalI][finalJ]);
-                        }
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        setFlagText(minefield2DArray[finalI][finalJ]);
+                    }
                     }
                 });
-
-
             }
         }
     }
