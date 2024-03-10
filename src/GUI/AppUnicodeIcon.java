@@ -1,24 +1,21 @@
 package GUI;
 
 public class AppUnicodeIcon {
-    private String flag="🚩";
-    private String mine="\uD83D\uDCA3";
-    private String happyFace="\uD83D\uDE42";
-    private String woopsyFace="\uD83D\uDE35";
 
     public String getFlag() {
-        return flag;
+        return "🚩";
     }
 
     public String getMine() {
-        return mine;
+        return "\uD83D\uDCA3";
     }
 
     public String getHappyFace() {
-        return happyFace;
+        return "\uD83D\uDE42";
     }
 
     public String getWoopsyFace() {
-        return woopsyFace;
+        return "\uD83D\uDE35";
     }
+
 }
