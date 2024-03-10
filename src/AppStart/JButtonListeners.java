@@ -19,12 +19,18 @@ public class JButtonListeners implements GameObserver {
     public JButtonListeners(MinefieldButton[][] minefield2DArray,GUIInitializer gui){
         this.gui=gui;
         this.theMinefield=minefield2DArray;
+        addListenerToFaceButton();
+        addListenersToMinefieldBtns(minefield2DArray);
+    }
 
+    private void addListenerToFaceButton(){
         //getResetGameFace listener
         gui.getResetGameFace().addActionListener(e -> {
-           restartGame();
+            restartGame();
         });
+    }
 
+    private void addListenersToMinefieldBtns(MinefieldButton[][] minefield2DArray){
         //Minefield buttons listeners:
         for (int i = 0; i < minefield2DArray.length; i++) {
             for (int j = 0; j < minefield2DArray[0].length; j++) {
@@ -40,11 +46,11 @@ public class JButtonListeners implements GameObserver {
                     //Check if it is a mine
                     if (minefield2DArray[finalI][finalJ].isAMine()){
                         onGameOver();
-                     //check if it is an indicator
+                        //check if it is an indicator
                     }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
                         checkWinCondition();
-                    //Any other cases means it is an empty cell
-                    // therefore just expand(open the closed ones)
+                        //Any other cases means it is an empty cell
+                        // therefore just expand(open the closed ones)
                     }else{
                         //Opener has combinations of expanding and open adjacent buttons/cells
                         MainPathOpener pathOpener=new MainPathOpener();
@@ -58,9 +64,9 @@ public class JButtonListeners implements GameObserver {
                 minefield2DArray[i][j].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseReleased(MouseEvent e) {
-                    if (SwingUtilities.isRightMouseButton(e)) {
-                        setFlagText(minefield2DArray[finalI][finalJ]);
-                    }
+                        if (SwingUtilities.isRightMouseButton(e)) {
+                            setFlagText(minefield2DArray[finalI][finalJ]);
+                        }
                     }
                 });
             }
@@ -131,19 +137,15 @@ public class JButtonListeners implements GameObserver {
         gui.getFlagsLeft().setText( "     " +   Integer.toString(gui.getFlagsCounter().getFlagsCounter()) + icons.getFlag());
     }
 
-    // Method to restart the game
     private void restartGame() {
-
         // Create a new instance of GUIInitializer to start a fresh game
         SwingUtilities.invokeLater(() -> {
             if (gui.getMainFrame()!= null) {
                 gui.getMainFrame().dispose();
             }
-
             GUIInitializer newGame = new GUIInitializer();
             newGame.run();
         });
     }
-
 
 }
