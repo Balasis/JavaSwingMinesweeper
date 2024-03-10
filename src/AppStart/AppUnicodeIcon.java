@@ -1,3 +1,5 @@
+package AppStart;
+
 public class AppUnicodeIcon {
     private String flag="🚩";
     private String mine="\uD83D\uDCA3";

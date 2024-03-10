@@ -1,3 +1,5 @@
+package AppStart;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -6,7 +8,7 @@ public class GUIInitializer {
 
     public static void run(){
         //Window frame of app:
-        JFrame mainFrame = new JFrame("Minesweeper");
+        JFrame mainFrame = new JFrame("AppStart.Minesweeper");
         //passing properties of if e.g dimensions ,close button=>close app e.t.c
         setMainFrameProperties(mainFrame);
 

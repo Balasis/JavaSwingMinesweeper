@@ -1,3 +1,5 @@
+package AppStart;
+
 import javax.swing.*;
 
 public class Minesweeper {

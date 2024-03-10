@@ -1,3 +1,5 @@
+package AppStart;
+
 public class FlagsCounter {
  private static int flagsCounter=9;
 

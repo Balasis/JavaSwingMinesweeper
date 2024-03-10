@@ -1,3 +1,7 @@
+package AppStart;
+
+import PathOpener.MainPathOpener;
+
 import javax.swing.*;
 
 public class MinefieldCreator{
@@ -99,8 +103,8 @@ public class MinefieldCreator{
                         System.out.println("isAnIndicator");
                     }else{
                         System.out.println("hello");
-                        MinefieldPathOpener pathOpener=new MinefieldPathOpener();
-                        pathOpener.pathOpen(minefield2DArray,finalI,finalJ);
+                        MainPathOpener pathOpener=new MainPathOpener();
+                        pathOpener.openPaths(minefield2DArray,finalI,finalJ);
                     }
                 });
             }
