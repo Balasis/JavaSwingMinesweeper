@@ -1,4 +1,5 @@
-package PathOpener;// The logic here is to
+package PathOpener;
+// The logic here is to
 //      1)Open surrounding minefield Buttons
 //      2)In order to check which minefieldButtons to open (expand) compare to the
 //         location of the button clicked we check 4 paths(TOP,BOTTOM,LEFT,RIGHT)
