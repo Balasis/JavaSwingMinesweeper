@@ -50,11 +50,11 @@ public class GUIInitializer{
         menuPanel.add(timer);
 
         //Bottom panel: minefield
-        JPanel minefieldPanel= new JPanel(new GridLayout(32,32));
+        JPanel minefieldPanel= new JPanel(new GridLayout(22,22));
         minefieldPanel.setPreferredSize(new Dimension(450,600));
 
         //Bottom ui elements
-        field=new MinefieldCreator(150,32);
+        field=new MinefieldCreator(99,22);
         passMineFieldIntoPanel(minefieldPanel,field.getMinefieldJButtons());
         JButtonListeners listeners=new JButtonListeners(field.getMinefieldJButtons(),this);
 
