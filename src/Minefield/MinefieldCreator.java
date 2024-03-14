@@ -35,6 +35,7 @@ public class MinefieldCreator{
             MinefieldButton mfB=minefield2DArray[randomIntNumber(0,8)][randomIntNumber(0,8)];
             if (!mfB.isAMine()){// checks first if there is already a mine at the current location
                 mfB.setAMine(true);
+                mfB.setText("b");
                 numberOfMines--;
             }
         }
@@ -53,6 +54,7 @@ public class MinefieldCreator{
                     if (surroundingMines!=0){
                         minefield2DArray[i][j].setAnIndicator(true);
                         minefield2DArray[i][j].setIndicatorNumber(surroundingMines);
+                        minefield2DArray[i][j].setText(Integer.toString(surroundingMines));
                     }
                 }
             }
