@@ -1,6 +1,4 @@
-package Minefield;
-
-import Minefield.MinefieldButton;
+package minefield;
 
 public class IndexChecker {
     private boolean isTopLeftExist;

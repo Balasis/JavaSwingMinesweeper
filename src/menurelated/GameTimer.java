@@ -1,4 +1,4 @@
-package MenuRelated;
+package menurelated;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

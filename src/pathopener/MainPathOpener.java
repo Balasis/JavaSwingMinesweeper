@@ -1,4 +1,4 @@
-package PathOpener;
+package pathopener;
 // The logic here is to
 //      1)Open surrounding minefield Buttons
 //      2)In order to check which minefieldButtons to open (expand) compare to the
@@ -9,9 +9,9 @@ package PathOpener;
 //      check the code inside openTop,OpenBottom e.t.c
 
 
-import Minefield.IndexAround;
-import Minefield.IndexChecker;
-import Minefield.MinefieldButton;
+import minefield.IndexAround;
+import minefield.IndexChecker;
+import minefield.MinefieldButton;
 
 public class MainPathOpener {
     private MinefieldButton[][] minefield2DArray;

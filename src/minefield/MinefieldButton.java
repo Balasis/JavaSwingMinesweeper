@@ -1,7 +1,7 @@
-package Minefield;
+package minefield;
 
-import AppStart.JButtonListeners;
-import GUI.AppUnicodeIcon;
+import appstart.JButtonListeners;
+import gui.AppUnicodeIcon;
 
 import javax.swing.*;
 import java.awt.*;

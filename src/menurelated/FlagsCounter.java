@@ -1,4 +1,4 @@
-package MenuRelated;
+package menurelated;
 
 public class FlagsCounter {
  private int flagsCounter=9;

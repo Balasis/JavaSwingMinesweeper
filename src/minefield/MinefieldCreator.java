@@ -1,7 +1,4 @@
-package Minefield;
-
-import java.util.ArrayList;
-import java.util.List;
+package minefield;
 
 public class MinefieldCreator{
     private final MinefieldButton[][] minefieldJButtons;

@@ -1,6 +1,6 @@
-package AppStart;
+package appstart;
 
-import GUI.GUIInitializer;
+import gui.GUIInitializer;
 
 import javax.swing.*;
 

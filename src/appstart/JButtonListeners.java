@@ -1,9 +1,9 @@
-package AppStart;
+package appstart;
 
-import GUI.AppUnicodeIcon;
-import GUI.GUIInitializer;
-import Minefield.MinefieldButton;
-import PathOpener.MainPathOpener;
+import gui.AppUnicodeIcon;
+import gui.GUIInitializer;
+import minefield.MinefieldButton;
+import pathopener.MainPathOpener;
 
 import javax.swing.*;
 import java.awt.*;

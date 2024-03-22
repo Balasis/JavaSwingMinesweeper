@@ -1,4 +1,4 @@
-package Minefield;
+package minefield;
 
 public class IndexAround {
     private int TopLeftIndexA;

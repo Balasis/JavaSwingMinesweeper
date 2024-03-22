@@ -1,8 +1,8 @@
-package PathOpener;
+package pathopener;
 
-import Minefield.IndexAround;
-import Minefield.IndexChecker;
-import Minefield.MinefieldButton;
+import minefield.IndexAround;
+import minefield.IndexChecker;
+import minefield.MinefieldButton;
 
 public class BottomPathOpener {
     private MinefieldButton[][] minefield2DArray;
