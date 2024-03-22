@@ -1,12 +1,9 @@
 package Minefield;
 
-import AppStart.GameObserver;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MinefieldCreator{
-    private final List<GameObserver> observers = new ArrayList<>();
     private final MinefieldButton[][] minefieldJButtons;
     private int numberOfMines;
     private final int squareDimensions;

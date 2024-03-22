@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class JButtonListeners implements GameObserver {
+public class JButtonListeners{
 
     private final AppUnicodeIcon icons=new AppUnicodeIcon();
     private final GUIInitializer gui;
@@ -100,7 +100,7 @@ public class JButtonListeners implements GameObserver {
         }
     }
 
-    @Override
+
     public void checkWinCondition() {
         boolean gameWon=true;
         for (int i = 0; i < theMinefield.length; i++) {
@@ -117,7 +117,6 @@ public class JButtonListeners implements GameObserver {
         }
     }
 
-    @Override
     public void onGameOver() {
         revealEverything();
         gui.getResetGameFace().setText(icons.getWoopsyFace());
@@ -133,7 +132,6 @@ public class JButtonListeners implements GameObserver {
         }
     }
 
-    @Override
     public void redisplayFlagNumber() {
         gui.getFlagsLeft().setText( "     " +   Integer.toString(gui.getFlagsCounter().getFlagsCounter()) + icons.getFlag());
     }
