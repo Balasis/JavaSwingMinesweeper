@@ -6,30 +6,30 @@ import gui.AppUnicodeIcon;
 import javax.swing.*;
 import java.awt.*;
 
-public class MinefieldButton extends JButton{
+public class MinefieldButton extends JButton {
     private int indicatorNumber;
     private boolean isAnIndicator;
-    private boolean isEmpty=true;
+    private boolean isEmpty = true;
     private boolean isAMine;
-    private boolean isRevealed=false;
-    private boolean isFlagged=false;
-    private AppUnicodeIcon icons=new AppUnicodeIcon();
+    private boolean isRevealed = false;
+    private boolean isFlagged = false;
+    private AppUnicodeIcon icons = new AppUnicodeIcon();
     private JButtonListeners listeners;
 
-    public MinefieldButton(){
+    public MinefieldButton() {
         //remove the square effect on focus
         this.setFocusable(false);
     }
 
-    public MinefieldButton(boolean isAnIndicator, boolean isAMine ){
-    this.isAnIndicator = isAnIndicator;
-    this.isAMine=isAMine;
+    public MinefieldButton(boolean isAnIndicator, boolean isAMine) {
+        this.isAnIndicator = isAnIndicator;
+        this.isAMine = isAMine;
         //remove the square effect on focus
         this.setFocusable(false);
     }
 
-    public void setIndicatorNumber(int indicatorNumber){
-        this.indicatorNumber=indicatorNumber;
+    public void setIndicatorNumber(int indicatorNumber) {
+        this.indicatorNumber = indicatorNumber;
     }
 
     public void setAnIndicator(boolean anIndicator) {
@@ -46,8 +46,8 @@ public class MinefieldButton extends JButton{
         this.setText(" ");
         this.setBackground(Color.gray);
 
-        String buttonString= isAMine ? icons.getMine() : isAnIndicator() ? Integer.toString(indicatorNumber) : " ";
-        if (this.isFlagged){
+        String buttonString = isAMine ? icons.getMine() : isAnIndicator() ? Integer.toString(indicatorNumber) : " ";
+        if (this.isFlagged) {
             listeners.setFlagText(this);
         }
         setRevealedColor();
@@ -60,27 +60,26 @@ public class MinefieldButton extends JButton{
         isFlagged = flagged;
     }
 
-    private void setRevealedColor(){
+    private void setRevealedColor() {
         Color c;
-        if(isAnIndicator){
-                if (indicatorNumber==1){
-                    c=Color.GREEN;
-                } else if (indicatorNumber==2) {
-                    c=Color.blue;
-                }else if(indicatorNumber==3){
-                    c=Color.orange;
-                }else{
-                    c=Color.RED;
-                }
+        if (isAnIndicator) {
+            if (indicatorNumber == 1) {
+                c = Color.GREEN;
+            } else if (indicatorNumber == 2) {
+                c = Color.blue;
+            } else if (indicatorNumber == 3) {
+                c = Color.orange;
+            } else {
+                c = Color.RED;
+            }
 
-        }else if(isAMine){
-            c=Color.BLACK;
-        }else{
-            c=Color.GRAY;
+        } else if (isAMine) {
+            c = Color.BLACK;
+        } else {
+            c = Color.GRAY;
         }
         this.setForeground(c);
     }
-
 
 
     public boolean isEmpty() {

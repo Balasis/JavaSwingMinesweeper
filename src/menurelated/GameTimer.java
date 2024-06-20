@@ -11,7 +11,7 @@ public class GameTimer {
     private JLabel timerLabel;
 
     public GameTimer(JLabel timerLabel) {
-        this.timerLabel=timerLabel;
+        this.timerLabel = timerLabel;
         minutes = 0;
         seconds = 0;
         swingTimer = new Timer(1000, new ActionListener() {
@@ -32,9 +32,9 @@ public class GameTimer {
         swingTimer.stop();
     }
 
-    private String sendToUi(){
+    private String sendToUi() {
         timerLabel.setText(toString());
-       return String.format("  %02d:%02d", minutes, seconds);
+        return String.format("  %02d:%02d", minutes, seconds);
     }
 
     @Override

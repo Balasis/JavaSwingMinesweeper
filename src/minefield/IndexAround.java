@@ -19,31 +19,31 @@ public class IndexAround {
     private int BottomIndexB;
     private int BottomRightIndexB;
 
-    public IndexAround(){
+    public IndexAround() {
     }
 
     public IndexAround(int indexA, int indexB) {
-        setIndexAroundValues(indexA,indexB);
+        setIndexAroundValues(indexA, indexB);
     }
 
-    public void setIndexAroundValues(int indexA,int indexB){
-        TopLeftIndexA = indexA-1;
+    public void setIndexAroundValues(int indexA, int indexB) {
+        TopLeftIndexA = indexA - 1;
         TopIndexA = indexA - 1;
-        TopRightIndexA =indexA - 1;
-        LeftIndexA =indexA;
-        RightIndexA =indexA;
-        BottomLeftIndexA=indexA+1;
-        BottomIndexA =indexA+1;
-        BottomRightIndexA =indexA+1;
+        TopRightIndexA = indexA - 1;
+        LeftIndexA = indexA;
+        RightIndexA = indexA;
+        BottomLeftIndexA = indexA + 1;
+        BottomIndexA = indexA + 1;
+        BottomRightIndexA = indexA + 1;
 
         TopLeftIndexB = indexB - 1;
         TopIndexB = indexB;
-        TopRightIndexB =indexB + 1;
-        LeftIndexB =indexB - 1;
-        RightIndexB =indexB + 1;
-        BottomLeftIndexB =indexB - 1;
-        BottomIndexB =indexB;
-        BottomRightIndexB =indexB + 1;
+        TopRightIndexB = indexB + 1;
+        LeftIndexB = indexB - 1;
+        RightIndexB = indexB + 1;
+        BottomLeftIndexB = indexB - 1;
+        BottomIndexB = indexB;
+        BottomRightIndexB = indexB + 1;
     }
 
     public int getTopLeftIndexA() {

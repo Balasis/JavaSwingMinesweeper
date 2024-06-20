@@ -10,28 +10,28 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class JButtonListeners{
+public class JButtonListeners {
 
-    private final AppUnicodeIcon icons=new AppUnicodeIcon();
+    private final AppUnicodeIcon icons = new AppUnicodeIcon();
     private final GUIInitializer gui;
     private final MinefieldButton[][] theMinefield;
 
 
-    public JButtonListeners(MinefieldButton[][] minefield2DArray,GUIInitializer gui){
-        this.gui=gui;
-        this.theMinefield=minefield2DArray;
+    public JButtonListeners(MinefieldButton[][] minefield2DArray, GUIInitializer gui) {
+        this.gui = gui;
+        this.theMinefield = minefield2DArray;
         addListenerToFaceButton();
         addListenersToMinefieldBtns(minefield2DArray);
     }
 
-    private void addListenerToFaceButton(){
+    private void addListenerToFaceButton() {
         //getResetGameFace listener
         gui.getResetGameFace().addActionListener(e -> {
             restartGame();
         });
     }
 
-    private void addListenersToMinefieldBtns(MinefieldButton[][] minefield2DArray){
+    private void addListenersToMinefieldBtns(MinefieldButton[][] minefield2DArray) {
         //Minefield buttons listeners:
         for (int i = 0; i < minefield2DArray.length; i++) {
             for (int j = 0; j < minefield2DArray[0].length; j++) {
@@ -45,17 +45,17 @@ public class JButtonListeners{
                     //Reset the flag in case there as one
                     setFlagText(minefield2DArray[finalI][finalJ]);
                     //Check if it is a mine
-                    if (minefield2DArray[finalI][finalJ].isAMine()){
+                    if (minefield2DArray[finalI][finalJ].isAMine()) {
                         onGameOver();
                         //check if it is an indicator
-                    }else if (minefield2DArray[finalI][finalJ].isAnIndicator()){
+                    } else if (minefield2DArray[finalI][finalJ].isAnIndicator()) {
                         checkWinCondition();
                         //Any other cases means it is an empty cell
                         // therefore just expand(open the closed ones)
-                    }else{
+                    } else {
                         //Opener has combinations of expanding and open adjacent buttons/cells
-                        MainPathOpener pathOpener=new MainPathOpener();
-                        pathOpener.openPaths(minefield2DArray,finalI,finalJ);
+                        MainPathOpener pathOpener = new MainPathOpener();
+                        pathOpener.openPaths(minefield2DArray, finalI, finalJ);
                         checkWinCondition();
                     }
 
@@ -74,9 +74,9 @@ public class JButtonListeners{
         }
     }
 
-    public void setFlagText(MinefieldButton button){
-        if (button.isRevealed()){
-            if (button.isFlagged()){
+    public void setFlagText(MinefieldButton button) {
+        if (button.isRevealed()) {
+            if (button.isFlagged()) {
                 gui.getFlagsCounter().increaseFlagsCounter();
                 button.setFlagged(false);
                 button.setText("");
@@ -91,7 +91,7 @@ public class JButtonListeners{
             button.setText("\uD83D\uDEA9");
             button.setForeground(Color.RED);
             redisplayFlagNumber();
-        }else{
+        } else {
             gui.getFlagsCounter().increaseFlagsCounter();
             button.setFlagged(false);
             button.setText("");
@@ -102,16 +102,16 @@ public class JButtonListeners{
 
 
     public void checkWinCondition() {
-        boolean gameWon=true;
+        boolean gameWon = true;
         for (int i = 0; i < theMinefield.length; i++) {
             for (int j = 0; j < theMinefield[0].length; j++) {
-                    if (!theMinefield[i][j].isAMine() && !theMinefield[i][j].isRevealed()){
-                        gameWon=false;
-                        break;
-                    }
+                if (!theMinefield[i][j].isAMine() && !theMinefield[i][j].isRevealed()) {
+                    gameWon = false;
+                    break;
                 }
             }
-        if (gameWon){
+        }
+        if (gameWon) {
             gui.getGameTimer().stopTimer();
             JOptionPane.showMessageDialog(null, "Congratulations! You've won the game!");
         }
@@ -124,7 +124,7 @@ public class JButtonListeners{
         gui.getGameTimer().stopTimer();
     }
 
-    private void revealEverything(){
+    private void revealEverything() {
         for (int i = 0; i < theMinefield.length; i++) {
             for (int j = 0; j < theMinefield[0].length; j++) {
                 theMinefield[i][j].setRevealed(true);
@@ -133,13 +133,13 @@ public class JButtonListeners{
     }
 
     public void redisplayFlagNumber() {
-        gui.getFlagsLeft().setText( "     " +   Integer.toString(gui.getFlagsCounter().getFlagsCounter()) + icons.getFlag());
+        gui.getFlagsLeft().setText("     " + Integer.toString(gui.getFlagsCounter().getFlagsCounter()) + icons.getFlag());
     }
 
     private void restartGame() {
         // Create a new instance of GUIInitializer to start a fresh game
         SwingUtilities.invokeLater(() -> {
-            if (gui.getMainFrame()!= null) {
+            if (gui.getMainFrame() != null) {
                 gui.getMainFrame().dispose();
             }
             GUIInitializer newGame = new GUIInitializer();

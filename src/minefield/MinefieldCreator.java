@@ -1,50 +1,50 @@
 package minefield;
 
-public class MinefieldCreator{
+public class MinefieldCreator {
     private final MinefieldButton[][] minefieldJButtons;
     private int numberOfMines;
     private final int squareDimensions;
 
-    public MinefieldCreator(int numberOfMines,int squareDimensions){
-        this.numberOfMines=numberOfMines;
-        this.squareDimensions=squareDimensions;
-        minefieldJButtons= createMinefield2dArray();//creates a 2d (square) field of MinefieldButtons(extend JButton class)
+    public MinefieldCreator(int numberOfMines, int squareDimensions) {
+        this.numberOfMines = numberOfMines;
+        this.squareDimensions = squareDimensions;
+        minefieldJButtons = createMinefield2dArray();//creates a 2d (square) field of MinefieldButtons(extend JButton class)
         addMinesToTheMinefield(minefieldJButtons);//add mines to random locations
         setIndicationNumbers(minefieldJButtons);//find and set number of surround mines of each Minefield Button.
 
     }
 
-    private MinefieldButton[][] createMinefield2dArray(){
-        MinefieldButton[][] minefieldArray=new MinefieldButton[squareDimensions][squareDimensions];
+    private MinefieldButton[][] createMinefield2dArray() {
+        MinefieldButton[][] minefieldArray = new MinefieldButton[squareDimensions][squareDimensions];
         for (int i = 0; i < minefieldArray.length; i++) {
             for (int j = 0; j < minefieldArray[0].length; j++) {
-                minefieldArray[i][j]=new MinefieldButton();
+                minefieldArray[i][j] = new MinefieldButton();
             }
         }
         return minefieldArray;
     }
 
-    private void addMinesToTheMinefield(MinefieldButton[][] minefield2DArray){
-        while(numberOfMines>0){
-            MinefieldButton mfB=minefield2DArray[randomIntNumber(0,8)][randomIntNumber(0,8)];
-            if (!mfB.isAMine()){// checks first if there is already a mine at the current location
+    private void addMinesToTheMinefield(MinefieldButton[][] minefield2DArray) {
+        while (numberOfMines > 0) {
+            MinefieldButton mfB = minefield2DArray[randomIntNumber(0, 8)][randomIntNumber(0, 8)];
+            if (!mfB.isAMine()) {// checks first if there is already a mine at the current location
                 mfB.setAMine(true);
                 numberOfMines--;
             }
         }
     }
 
-    private int randomIntNumber(int min,int max){
+    private int randomIntNumber(int min, int max) {
         return (int) (Math.random() * (max - min + 1)) + min;
     }
 
-    private void setIndicationNumbers(MinefieldButton[][] minefield2DArray){
+    private void setIndicationNumbers(MinefieldButton[][] minefield2DArray) {
         int surroundingMines;
         for (int i = 0; i < minefield2DArray.length; i++) {
             for (int j = 0; j < minefield2DArray[0].length; j++) {
-                if (!minefield2DArray[i][j].isAMine()){
-                    surroundingMines=findSurroundingMinesNum(minefield2DArray,i,j);
-                    if (surroundingMines!=0){
+                if (!minefield2DArray[i][j].isAMine()) {
+                    surroundingMines = findSurroundingMinesNum(minefield2DArray, i, j);
+                    if (surroundingMines != 0) {
                         minefield2DArray[i][j].setAnIndicator(true);
                         minefield2DArray[i][j].setIndicatorNumber(surroundingMines);
                     }
@@ -88,8 +88,6 @@ public class MinefieldCreator{
     public MinefieldButton[][] getMinefieldJButtons() {
         return minefieldJButtons;
     }
-
-
 
 
 }

@@ -17,31 +17,31 @@ public class MainPathOpener {
     private MinefieldButton[][] minefield2DArray;
     private int indexA;
     private int indexB;
-    private final IndexChecker indexChecker=new IndexChecker();
-    private final IndexAround indexAround=new IndexAround();
-    private final SquarePathOpener squarePathOpener=new SquarePathOpener();
-    private final TopPathOpener topPathOpener=new TopPathOpener();
-    private final BottomPathOpener bottomPathOpener=new BottomPathOpener();
-    private final LeftPathOpener leftPathOpener=new LeftPathOpener();
-    private final RightPathOpener rightPathOpener=new RightPathOpener();
+    private final IndexChecker indexChecker = new IndexChecker();
+    private final IndexAround indexAround = new IndexAround();
+    private final SquarePathOpener squarePathOpener = new SquarePathOpener();
+    private final TopPathOpener topPathOpener = new TopPathOpener();
+    private final BottomPathOpener bottomPathOpener = new BottomPathOpener();
+    private final LeftPathOpener leftPathOpener = new LeftPathOpener();
+    private final RightPathOpener rightPathOpener = new RightPathOpener();
 
-    public MainPathOpener(){
+    public MainPathOpener() {
     }
 
-    public MainPathOpener(MinefieldButton[][] minefield2DArray, int indexA, int indexB){
-    openPaths(minefield2DArray,indexA,indexB);
+    public MainPathOpener(MinefieldButton[][] minefield2DArray, int indexA, int indexB) {
+        openPaths(minefield2DArray, indexA, indexB);
     }
 
-    public void openPaths(MinefieldButton[][] minefield2DArray,int indexA,int indexB){
-        this.minefield2DArray=minefield2DArray;
-        this.indexA=indexA;
-        this.indexB=indexB;
+    public void openPaths(MinefieldButton[][] minefield2DArray, int indexA, int indexB) {
+        this.minefield2DArray = minefield2DArray;
+        this.indexA = indexA;
+        this.indexB = indexB;
 
-        squarePathOpener.openPath(minefield2DArray,indexA,indexB);
-        topPathOpener.openPath(minefield2DArray,indexA,indexB);
-        bottomPathOpener.openPath(minefield2DArray,indexA,indexB);
-        leftPathOpener.openPath(minefield2DArray,indexA,indexB);
-        rightPathOpener.openPath(minefield2DArray,indexA,indexB);
+        squarePathOpener.openPath(minefield2DArray, indexA, indexB);
+        topPathOpener.openPath(minefield2DArray, indexA, indexB);
+        bottomPathOpener.openPath(minefield2DArray, indexA, indexB);
+        leftPathOpener.openPath(minefield2DArray, indexA, indexB);
+        rightPathOpener.openPath(minefield2DArray, indexA, indexB);
     }
 
 }
